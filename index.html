@@ -153,9 +153,7 @@
     border-radius:var(--r);
     box-shadow:0 2px 0 rgba(26,24,19,.04);
   }
-  .stage:last-child{background:linear-gradient(170deg,#FFF6DE,#FFE9AE);border-color:rgba(217,147,10,.38)}
   .stage .n{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--cream-dim);margin-bottom:14px}
-  .stage:last-child .n{color:var(--amber-deep)}
   .figure{flex:1;display:grid;place-items:end center;margin-bottom:14px}
   .figure img{height:132px;width:auto;object-fit:contain;display:block}
   .stage .name{font-weight:700;font-size:15px;letter-spacing:-.01em;line-height:1.3}
@@ -269,7 +267,7 @@
     </div>
 
     <h1 data-i18n="h1" data-i18n-html>One rep today changes <em>who you are tomorrow.</em></h1>
-    <p class="lede" data-i18n="lede">Tap the exercises you did. No sets, no reps, no forms. The more you train, the more your character evolves — all the way to Muscle God.</p>
+    <p class="lede" data-i18n="lede">Tap the exercises you did. No sets to log, no reps to count. The more you train, the more your character evolves — all the way to Muscle God.</p>
 
     <div class="cta-row">
       <a class="btn" href="https://apps.apple.com/us/app/muscle-odyssey/id6810556607">
@@ -330,8 +328,8 @@
     <div class="grid">
       <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <h3 data-i18n="c1h">20 exercises, zero forms</h3>
-        <p data-i18n="c1p">10 home exercises and 10 gym exercises. Tap the ones you did today. No sets, no reps, nothing to type.</p>
+        <h3 data-i18n="c1h">20 exercises, one tap each</h3>
+        <p data-i18n="c1p">10 home exercises and 10 gym exercises. Tap the ones you did today. One tap is the whole record — no sets, no reps.</p>
       </div>
       <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6L12 2Z"/></svg></div>
@@ -368,7 +366,7 @@
     <div class="pgrid">
       <div>
         <p class="eyebrow" style="color:var(--amber)" data-i18n="pEyebrow">Premium</p>
-        <h2 class="hd" data-i18n="pH2">The habit is free. The hindsight is Premium.</h2>
+        <h2 class="hd" data-i18n="pH2">The habit is free. Looking back is Premium.</h2>
         <p class="sub" data-i18n="pSub">Everything you need to build the habit costs nothing. Premium is for the people who want to look back at what they've built.</p>
 
         <ul class="plist">
@@ -411,7 +409,7 @@
 <section class="closer">
   <div class="wrap">
     <h2 data-i18n="cH2">Start your journey today.</h2>
-    <p data-i18n="cP">It wasn't your fault that it didn't stick. So I made it one tap.</p>
+    <p data-i18n="cP">It wasn't your fault that the habit didn't stick. So I made it one tap.</p>
     <a class="btn" href="https://apps.apple.com/us/app/muscle-odyssey/id6810556607">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.8c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.7 2.3 2.9 2.2 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.2.9-1.3 1.3-2.5 1.3-2.6 0 0-2.5-1-2.5-3.5ZM14.2 5.9c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.9 1 .1 2.1-.5 2.7-1.3Z"/></svg>
       <span data-i18n="cta1">Download on the App Store</span>
@@ -441,7 +439,7 @@ const I18N = {
     badge:"App Storeで公開中",
     kicker:"ヘルスケア／フィットネス · iPhone",
     h1:"今日の1回が、<em>明日のあなたを変える。</em>",
-    lede:"やった種目をタップするだけ。セットもレップも、入力欄もありません。続けるほどキャラクターが成長し、最終形「筋肉の神」を目指せます。",
+    lede:"やった種目をタップするだけ。セット数もレップ数も数えません。続けるほどキャラクターが成長し、最終形「筋肉の神」を目指せます。",
     cta1:"App Storeでダウンロード",
     cta2:"プレミアムの内容を見る",
     heroMeta:"基本無料 · プレミアムは<b>7日間無料</b> · iOS 16.0以降",
@@ -458,8 +456,8 @@ const I18N = {
     fEyebrow:"使い方",
     fH2:"記録は、ワンタップで終わります。",
     fSub:"入力が運動より面倒で、記録アプリが続かなかった人のために作りました。",
-    c1h:"20種目、入力ゼロ",
-    c1p:"家トレ10種目、ジムトレ10種目。今日やったものをタップするだけ。セットもレップも、打ち込む文字もありません。",
+    c1h:"20種目、タップだけ",
+    c1p:"家トレ10種目、ジムトレ10種目。今日やったものをタップするだけ。タップ1回でその日の記録は完了。セット数もレップ数も数えません。",
     c2h:"パーフェクトメダル",
     c2p:"1日10種目で通算日数が1つ進みます。20種目すべてクリアした日には、特別なパーフェクトメダルを獲得します。",
     c3h:"365日で1周",
@@ -501,7 +499,7 @@ const I18N = {
     badge:"Ya en el App Store",
     kicker:"Salud y forma física · iPhone",
     h1:"Una repetición hoy cambia <em>quién serás mañana.</em>",
-    lede:"Toca los ejercicios que hiciste. Sin series, sin repeticiones, sin formularios. Cuanto más entrenas, más evoluciona tu personaje, hasta llegar a Dios Muscular.",
+    lede:"Toca los ejercicios que hiciste. Sin series ni repeticiones que contar. Cuanto más entrenas, más evoluciona tu personaje, hasta llegar a Dios Muscular.",
     cta1:"Descargar en el App Store",
     cta2:"Ver qué incluye Premium",
     heroMeta:"Gratis · <b>7 días de prueba</b> en Premium · iOS 16.0 o posterior",
@@ -518,8 +516,8 @@ const I18N = {
     fEyebrow:"Cómo funciona",
     fH2:"Registrar un entrenamiento es un solo toque.",
     fSub:"Hecho para quienes abandonaron otras apps porque rellenar formularios costaba más que el propio entrenamiento.",
-    c1h:"20 ejercicios, cero formularios",
-    c1p:"10 ejercicios en casa y 10 en el gimnasio. Toca los que hiciste hoy. Sin series, sin repeticiones, sin escribir nada.",
+    c1h:"20 ejercicios, un toque cada uno",
+    c1p:"10 ejercicios en casa y 10 en el gimnasio. Toca los que hiciste hoy. Un toque basta: sin series ni repeticiones que contar.",
     c2h:"Medalla Perfecta",
     c2p:"Completa 10 ejercicios en un día y tu total sube en uno. Completa los 20 y ganas una Medalla Perfecta por ese día.",
     c3h:"365 días por vuelta",
@@ -561,7 +559,7 @@ const I18N = {
     badge:"已在 App Store 上架",
     kicker:"健康與健身 · iPhone",
     h1:"今天的一下，<em>改變明天的你。</em>",
-    lede:"輕觸你今天做過的項目就好。不用記組數、不用記次數、沒有任何表單。練得越久，角色就越進化，一路邁向「肌肉之神」。",
+    lede:"輕觸你今天做過的項目就好。不用記組數，也不用記次數。練得越久，角色就越進化，一路邁向「肌肉之神」。",
     cta1:"在 App Store 下載",
     cta2:"看看進階會員有什麼",
     heroMeta:"免費使用 · 進階會員<b>7天免費試用</b> · 需 iOS 16.0 以上",
@@ -578,8 +576,8 @@ const I18N = {
     fEyebrow:"如何使用",
     fH2:"記錄一次訓練，只要輕觸一下。",
     fSub:"為那些因為「填表比訓練還累」而放棄其他記錄 App 的人而做。",
-    c1h:"20 個項目，零輸入",
-    c1p:"居家訓練 10 項、健身房訓練 10 項。點選你今天做過的就好。不用組數、不用次數，什麼都不用打字。",
+    c1h:"20 個項目，一觸即記",
+    c1p:"居家訓練 10 項、健身房訓練 10 項。點選你今天做過的就好。點一下就完成記錄，不用記組數，也不用記次數。",
     c2h:"完美獎章",
     c2p:"一天完成 10 項，累計天數就加一。一天內完成全部 20 項，就能獲得當天的完美獎章。",
     c3h:"365 天為一圈",
@@ -621,7 +619,7 @@ const I18N = {
     badge:"App Store 출시",
     kicker:"건강 및 피트니스 · iPhone",
     h1:"오늘의 한 번이 <em>내일의 당신을 바꿉니다.</em>",
-    lede:"오늘 한 운동을 탭하기만 하면 됩니다. 세트도, 횟수도, 입력창도 없습니다. 계속할수록 캐릭터가 성장해 최종 단계인 '근육의 신'에 다가갑니다.",
+    lede:"오늘 한 운동을 탭하기만 하면 됩니다. 세트도 횟수도 세지 않습니다. 계속할수록 캐릭터가 성장해 최종 단계인 '근육의 신'에 다가갑니다.",
     cta1:"App Store에서 다운로드",
     cta2:"프리미엄 기능 보기",
     heroMeta:"기본 무료 · 프리미엄 <b>7일 무료 체험</b> · iOS 16.0 이상",
@@ -638,8 +636,8 @@ const I18N = {
     fEyebrow:"사용 방법",
     fH2:"운동 기록은 탭 한 번이면 끝납니다.",
     fSub:"입력이 운동보다 번거로워서 다른 기록 앱을 포기했던 분들을 위해 만들었습니다.",
-    c1h:"20개 운동, 입력은 0",
-    c1p:"홈트레이닝 10개, 헬스장 10개. 오늘 한 것만 탭하세요. 세트도, 횟수도, 타이핑할 것도 없습니다.",
+    c1h:"20개 운동, 탭 한 번이면 끝",
+    c1p:"홈트레이닝 10개, 헬스장 10개. 오늘 한 것만 탭하세요. 탭 한 번이면 기록 끝, 세트도 횟수도 세지 않습니다.",
     c2h:"퍼펙트 메달",
     c2p:"하루에 10개를 완료하면 누적 일수가 하나 올라갑니다. 20개를 모두 완료하면 그날의 퍼펙트 메달을 획득합니다.",
     c3h:"한 바퀴에 365일",
