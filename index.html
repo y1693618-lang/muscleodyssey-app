@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Muscle Odyssey — Tap. Train. Evolve.</title>
+<meta name="description" content="A workout habit app for everyone. Tap the exercises you did, at home or at the gym, and watch your character evolve from Slim to Muscle God.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Muscle Odyssey — Tap. Train. Evolve.">
+<meta property="og:description" content="A workout habit app for everyone. Tap the exercises you did, at home or at the gym, and watch your character evolve from Slim to Muscle God.">
+<meta property="og:url" content="https://y1693618-lang.github.io/muscleodyssey-app/">
+<link rel="canonical" href="https://y1693618-lang.github.io/muscleodyssey-app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#111013">
+
+<!-- FAVICON: drop your 1024x1024 icon in this folder as icon.png and it will be used here. -->
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="apple-touch-icon" href="icon.png">
+
+<style>
+  :root{
+    --amber:#F5B31E;
+    --amber-deep:#D9930A;
+    --ink:#111013;
+    --ink-soft:#1C1A20;
+    --line:rgba(255,255,255,.10);
+    --text:#EDEAE4;
+    --text-dim:#A29D95;
+    --cream:#FBF7EF;
+    --cream-ink:#1A1813;
+    --cream-dim:#6B6355;
+    --max:1080px;
+    --r:18px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Helvetica,Arial,"Hiragino Sans","Noto Sans JP",sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  section{padding:88px 0}
+  h1,h2,h3{line-height:1.15;letter-spacing:-.02em;font-weight:700}
+  a{color:inherit}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 80px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero::before{
+    content:"";position:absolute;inset:auto 50% auto 50%;
+    top:-340px;width:900px;height:900px;transform:translateX(-50%);
+    background:radial-gradient(circle,rgba(245,179,30,.20) 0%,rgba(245,179,30,.05) 42%,transparent 68%);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
+    color:var(--amber);
+    border:1px solid rgba(245,179,30,.35);
+    background:rgba(245,179,30,.07);
+    padding:7px 14px;border-radius:999px;margin-bottom:28px;
+  }
+  .badge i{width:6px;height:6px;border-radius:50%;background:var(--amber);display:block}
+
+  .hero-top{display:flex;align-items:center;gap:22px;margin-bottom:26px}
+  .appicon{
+    width:96px;height:96px;border-radius:22px;flex:none;
+    background:linear-gradient(160deg,#FFD264,var(--amber) 55%,var(--amber-deep));
+    box-shadow:0 18px 44px rgba(245,179,30,.24), inset 0 1px 0 rgba(255,255,255,.4);
+    display:grid;place-items:center;overflow:hidden;
+  }
+  .appicon img{width:100%;height:100%;object-fit:cover;display:block}
+  .appicon svg{width:58px;height:58px}
+
+  h1{font-size:clamp(38px,6.4vw,66px);margin-bottom:20px}
+  h1 em{font-style:normal;color:var(--amber)}
+  .lede{font-size:clamp(17px,2.2vw,21px);color:var(--text-dim);max-width:44ch;margin-bottom:36px}
+
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--amber);color:#181306;
+    font-weight:700;font-size:16px;text-decoration:none;
+    padding:15px 26px;border-radius:14px;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 10px 26px rgba(245,179,30,.26);
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(245,179,30,.34)}
+  .btn svg{width:19px;height:19px}
+  .btn-ghost{
+    background:transparent;color:var(--text);
+    border:1px solid var(--line);box-shadow:none;font-weight:600;
+  }
+  .btn-ghost:hover{border-color:rgba(255,255,255,.3);box-shadow:none}
+  .meta{margin-top:22px;font-size:14px;color:var(--text-dim)}
+  .meta b{color:var(--text);font-weight:600}
+
+  /* ---------- EVOLUTION ---------- */
+  .stages{background:var(--cream);color:var(--cream-ink)}
+  .eyebrow{
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:700;color:var(--amber-deep);margin-bottom:14px;
+  }
+  .stages h2{font-size:clamp(28px,4.4vw,42px);margin-bottom:12px}
+  .stages p.sub{color:var(--cream-dim);max-width:52ch;margin-bottom:46px}
+
+  .track{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:14px;
+    position:relative;
+  }
+  .stage{
+    text-align:center;padding:26px 10px 22px;
+    background:#fff;border:1px solid rgba(26,24,19,.08);
+    border-radius:var(--r);
+    box-shadow:0 2px 0 rgba(26,24,19,.04);
+  }
+  .stage:last-child{
+    background:linear-gradient(170deg,#FFF5DA,#FFE7A8);
+    border-color:rgba(217,147,10,.35);
+  }
+  .stage .n{
+    font-size:11px;font-weight:700;letter-spacing:.1em;
+    color:var(--cream-dim);margin-bottom:12px;
+  }
+  .stage:last-child .n{color:var(--amber-deep)}
+  .figure{
+    width:100%;height:76px;display:grid;place-items:center;margin-bottom:12px;
+  }
+  .figure svg{height:100%;width:auto;display:block}
+  .stage .name{font-weight:700;font-size:15px;letter-spacing:-.01em}
+
+  /* ---------- FEATURES ---------- */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+  .card{
+    background:var(--ink-soft);border:1px solid var(--line);
+    border-radius:var(--r);padding:28px 26px;
+  }
+  .card .ic{
+    width:40px;height:40px;border-radius:11px;
+    background:rgba(245,179,30,.12);
+    display:grid;place-items:center;margin-bottom:18px;
+  }
+  .card .ic svg{width:20px;height:20px;stroke:var(--amber)}
+  .card h3{font-size:17px;margin-bottom:8px}
+  .card p{font-size:15px;color:var(--text-dim);line-height:1.6}
+
+  section h2.hd{font-size:clamp(28px,4.4vw,42px);margin-bottom:12px}
+  section p.sub{color:var(--text-dim);max-width:52ch}
+
+  /* ---------- PREMIUM ---------- */
+  .premium{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .pgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .plist{list-style:none;margin-top:30px}
+  .plist li{
+    display:flex;gap:13px;align-items:flex-start;
+    padding:13px 0;border-bottom:1px solid var(--line);font-size:16px;
+  }
+  .plist li:last-child{border-bottom:0}
+  .plist svg{width:19px;height:19px;flex:none;margin-top:3px;stroke:var(--amber)}
+  .price-card{
+    background:var(--ink-soft);border:1px solid var(--line);
+    border-radius:22px;padding:34px 30px;
+  }
+  .trial{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--amber);
+    background:rgba(245,179,30,.1);border-radius:999px;padding:6px 13px;margin-bottom:22px;
+  }
+  .plan{display:flex;justify-content:space-between;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line)}
+  .plan:last-of-type{border-bottom:0}
+  .plan .lbl{font-size:15px;color:var(--text-dim)}
+  .plan .amt{font-size:26px;font-weight:700;letter-spacing:-.02em}
+  .plan .amt span{font-size:14px;font-weight:500;color:var(--text-dim)}
+  .save{
+    margin-top:18px;font-size:13px;color:var(--text-dim);
+    background:rgba(255,255,255,.03);border-radius:10px;padding:11px 14px;
+  }
+  .save b{color:var(--amber);font-weight:700}
+
+  /* ---------- STORY ---------- */
+  .story{background:var(--cream);color:var(--cream-ink)}
+  .story h2{font-size:clamp(26px,4vw,38px);margin-bottom:18px}
+  .story .body{max-width:60ch}
+  .story .body p{color:var(--cream-dim);margin-bottom:16px}
+  .story .body p:last-child{margin-bottom:0}
+  .story .body strong{color:var(--cream-ink)}
+  .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+  .chip{
+    font-size:13px;font-weight:600;padding:7px 13px;border-radius:999px;
+    background:rgba(26,24,19,.05);border:1px solid rgba(26,24,19,.09);
+  }
+
+  /* ---------- CLOSER ---------- */
+  .closer{text-align:center;padding:104px 0}
+  .closer h2{font-size:clamp(30px,5vw,48px);margin-bottom:18px}
+  .closer p{color:var(--text-dim);margin-bottom:34px}
+  .langs{margin-top:30px;font-size:14px;color:var(--text-dim)}
+
+  footer{border-top:1px solid var(--line);padding:38px 0 52px}
+  .frow{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  .flinks{display:flex;gap:26px;flex-wrap:wrap}
+  .flinks a{color:var(--text-dim);text-decoration:none;font-size:15px}
+  .flinks a:hover{color:var(--text)}
+  .copy{font-size:14px;color:var(--text-dim)}
+
+  @media (max-width:880px){
+    section{padding:64px 0}
+    .grid{grid-template-columns:1fr}
+    .pgrid{grid-template-columns:1fr;gap:36px}
+    .track{grid-template-columns:repeat(2,1fr)}
+    .stage:last-child{grid-column:1 / -1}
+    .hero{padding:68px 0 58px}
+    .appicon{width:76px;height:76px;border-radius:18px}
+    .appicon svg{width:46px;height:46px}
+  }
+  @media (max-width:420px){
+    .btn{width:100%;justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <span class="badge"><i></i>Now on the App Store</span>
+
+    <div class="hero-top">
+      <div class="appicon">
+        <!-- Upload your 1024x1024 icon to this folder as icon.png.
+             If the file is missing, the drawn fallback below is shown instead. -->
+        <img src="icon.png" alt="Muscle Odyssey app icon"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <svg style="display:none" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M32 9a6 6 0 1 1 0 12 6 6 0 0 1 0-12Z" fill="#3A2A05"/>
+          <path d="M20 26c0-3 2.6-4.6 5.2-4.6h13.6C41.4 21.4 44 23 44 26v5.5c0 1.6 1 2.4 2.4 3.1 3 1.5 5.6 3.4 5.6 7.1 0 3.2-2.5 5.3-5.4 5.3-2.6 0-4.4-1.4-5.6-3.2V52a3 3 0 0 1-3 3h-12a3 3 0 0 1-3-3v-8.2c-1.2 1.8-3 3.2-5.6 3.2C14.5 46.8 12 44.7 12 41.5c0-3.7 2.6-5.6 5.6-7.1 1.4-.7 2.4-1.5 2.4-3.1V26Z" fill="#3A2A05"/>
+        </svg>
+      </div>
+      <div>
+        <div style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);font-weight:600">Health &amp; Fitness · iPhone</div>
+        <div style="font-size:21px;font-weight:700;letter-spacing:-.01em">Muscle Odyssey</div>
+      </div>
+    </div>
+
+    <h1>One rep today changes <em>who you are tomorrow.</em></h1>
+    <p class="lede">Tap the exercises you did. No sets, no reps, no forms. The more you train, the more your character evolves — all the way to Muscle God.</p>
+
+    <div class="cta-row">
+      <a class="btn" href="https://apps.apple.com/us/app/muscle-odyssey/id6810556607">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.8c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.7 2.3 2.9 2.2 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.2.9-1.3 1.3-2.5 1.3-2.6 0 0-2.5-1-2.5-3.5ZM14.2 5.9c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.9 1 .1 2.1-.5 2.7-1.3Z"/></svg>
+        Download on the App Store
+      </a>
+      <a class="btn btn-ghost" href="#premium">See what Premium unlocks</a>
+    </div>
+
+    <p class="meta">Free to use · <b>7-day free trial</b> on Premium · iOS 16.0 or later</p>
+  </div>
+</header>
+
+<!-- ============ EVOLUTION ============ -->
+<section class="stages">
+  <div class="wrap">
+    <p class="eyebrow">The journey</p>
+    <h2>Five stages. One long road.</h2>
+    <p class="sub">Every logged workout moves you forward. Your character changes shape as you go, so progress is something you can actually see.</p>
+
+    <div class="track">
+      <div class="stage">
+        <div class="n">STAGE 1</div>
+        <div class="figure">
+          <svg viewBox="0 0 40 80" fill="none" aria-hidden="true">
+            <circle cx="20" cy="11" r="7" fill="#C9C2B4"/>
+            <rect x="16" y="19" width="8" height="26" rx="4" fill="#C9C2B4"/>
+            <rect x="9" y="21" width="5" height="22" rx="2.5" fill="#C9C2B4"/>
+            <rect x="26" y="21" width="5" height="22" rx="2.5" fill="#C9C2B4"/>
+            <rect x="14" y="45" width="5" height="28" rx="2.5" fill="#C9C2B4"/>
+            <rect x="21" y="45" width="5" height="28" rx="2.5" fill="#C9C2B4"/>
+          </svg>
+        </div>
+        <div class="name">Slim</div>
+      </div>
+
+      <div class="stage">
+        <div class="n">STAGE 2</div>
+        <div class="figure">
+          <svg viewBox="0 0 40 80" fill="none" aria-hidden="true">
+            <circle cx="20" cy="11" r="7" fill="#B8AF9C"/>
+            <rect x="14" y="19" width="12" height="27" rx="5" fill="#B8AF9C"/>
+            <rect x="7" y="21" width="6" height="23" rx="3" fill="#B8AF9C"/>
+            <rect x="27" y="21" width="6" height="23" rx="3" fill="#B8AF9C"/>
+            <rect x="13" y="46" width="6" height="28" rx="3" fill="#B8AF9C"/>
+            <rect x="21" y="46" width="6" height="28" rx="3" fill="#B8AF9C"/>
+          </svg>
+        </div>
+        <div class="name">Toned</div>
+      </div>
+
+      <div class="stage">
+        <div class="n">STAGE 3</div>
+        <div class="figure">
+          <svg viewBox="0 0 40 80" fill="none" aria-hidden="true">
+            <circle cx="20" cy="11" r="7.5" fill="#A2977F"/>
+            <path d="M13 21h14v26a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5V21Z" fill="#A2977F"/>
+            <rect x="5" y="21" width="7" height="24" rx="3.5" fill="#A2977F"/>
+            <rect x="28" y="21" width="7" height="24" rx="3.5" fill="#A2977F"/>
+            <rect x="12" y="51" width="7" height="24" rx="3.5" fill="#A2977F"/>
+            <rect x="21" y="51" width="7" height="24" rx="3.5" fill="#A2977F"/>
+          </svg>
+        </div>
+        <div class="name">Lean Athletic</div>
+      </div>
+
+      <div class="stage">
+        <div class="n">STAGE 4</div>
+        <div class="figure">
+          <svg viewBox="0 0 40 80" fill="none" aria-hidden="true">
+            <circle cx="20" cy="11" r="7.5" fill="#8A7C5F"/>
+            <path d="M11 21h18v25a6 6 0 0 1-6 6h-6a6 6 0 0 1-6-6V21Z" fill="#8A7C5F"/>
+            <rect x="2" y="20" width="9" height="25" rx="4.5" fill="#8A7C5F"/>
+            <rect x="29" y="20" width="9" height="25" rx="4.5" fill="#8A7C5F"/>
+            <rect x="11" y="51" width="8" height="24" rx="4" fill="#8A7C5F"/>
+            <rect x="21" y="51" width="8" height="24" rx="4" fill="#8A7C5F"/>
+          </svg>
+        </div>
+        <div class="name">Powerhouse</div>
+      </div>
+
+      <div class="stage">
+        <div class="n">FINAL FORM</div>
+        <div class="figure">
+          <svg viewBox="0 0 40 80" fill="none" aria-hidden="true">
+            <circle cx="20" cy="11" r="8" fill="#D9930A"/>
+            <path d="M9 21h22v24a7 7 0 0 1-7 7h-8a7 7 0 0 1-7-7V21Z" fill="#D9930A"/>
+            <rect x="0" y="19" width="10" height="26" rx="5" fill="#D9930A"/>
+            <rect x="30" y="19" width="10" height="26" rx="5" fill="#D9930A"/>
+            <rect x="10" y="51" width="9" height="24" rx="4.5" fill="#D9930A"/>
+            <rect x="21" y="51" width="9" height="24" rx="4.5" fill="#D9930A"/>
+            <path d="M20 0l2.1 4.4 4.9.7-3.5 3.4.8 4.8-4.3-2.3-4.3 2.3.8-4.8-3.5-3.4 4.9-.7L20 0Z" fill="#F5B31E"/>
+          </svg>
+        </div>
+        <div class="name">Muscle God</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--amber)">How it works</p>
+    <h2 class="hd">Logging a workout takes one tap.</h2>
+    <p class="sub">Built for people who quit other trackers because filling in forms felt like more work than the workout.</p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>20 exercises, zero forms</h3>
+        <p>10 home exercises and 10 gym exercises. Tap the ones you did today. No sets, no reps, nothing to type.</p>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6L12 2Z"/></svg></div>
+        <h3>The Perfect Medal</h3>
+        <p>Clear 10 exercises in a day and your total climbs by one. Clear all 20 and you earn a Perfect Medal for that day.</p>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg></div>
+        <h3>365 days per lap</h3>
+        <p>One journey lasts a year. Finish it and you earn a gold star, then start the next lap with your record intact.</p>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18"/><path d="M9 21V9"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
+        <h3>Home or gym, your call</h3>
+        <p>You don't need a membership to start. Train on the floor of your room and the app treats it exactly the same.</p>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 10h-1.3A7 7 0 1 0 5 16"/><path d="M12 12v9"/><path d="M8 17l4 4 4-4"/></svg></div>
+        <h3>Your records follow you</h3>
+        <p>Keep iCloud Backup on and your history carries over when you switch to a new iPhone.</p>
+      </div>
+
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z"/></svg></div>
+        <h3>Five languages</h3>
+        <p>English, Japanese, Spanish, Traditional Chinese and Korean, with local pricing in each market.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREMIUM ============ -->
+<section class="premium" id="premium">
+  <div class="wrap">
+    <div class="pgrid">
+      <div>
+        <p class="eyebrow" style="color:var(--amber)">Premium</p>
+        <h2 class="hd">The habit is free. The hindsight is Premium.</h2>
+        <p class="sub">Everything you need to build the habit costs nothing. Premium is for the people who want to look back at what they've built.</p>
+
+        <ul class="plist">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <span><strong>Analytics</strong> — current streak and monthly completion rate at a glance.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <span><strong>Calendar</strong> — every day you trained, laid out month by month.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <span><strong>Body weight log</strong> — with a chart that shows the direction you're heading.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <span><strong>Protein log</strong> — track intake alongside the training itself.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <span class="trial">7 days free</span>
+        <div class="plan">
+          <span class="lbl">Monthly</span>
+          <span class="amt">$4.99<span> /mo</span></span>
+        </div>
+        <div class="plan">
+          <span class="lbl">Yearly</span>
+          <span class="amt">$42.99<span> /yr</span></span>
+        </div>
+        <p class="save">Yearly works out <b>about 28% cheaper</b> than paying monthly for a year. Local pricing applies in Japan, Korea, Taiwan and Spanish-speaking markets.</p>
+        <a class="btn" style="margin-top:24px;width:100%;justify-content:center" href="https://apps.apple.com/us/app/muscle-odyssey/id6810556607">Start the free trial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="story">
+  <div class="wrap">
+    <p class="eyebrow">Behind the app</p>
+    <h2>Built by one person, on a Windows PC, with no Mac.</h2>
+    <div class="body">
+      <p>Around me in Japan, new gyms keep opening. Every time I passed one, I thought about how many people want to start training — and how many stop before it ever becomes a habit. I wanted to make something anyone could use, at home or at the gym, that makes you want to come back tomorrow.</p>
+      <p><strong>I had no programming experience when I started.</strong> I wrote Muscle Odyssey in Swift and SwiftUI with AI as my coding partner, edited the code on GitHub in the browser, and built and uploaded it with Codemagic — all from a Windows machine.</p>
+      <p>The hardest part was never the code. It was deciding what to build, and finding out what people would actually pay for. While researching subscription pricing I found that Korea and Taiwan have large gym cultures too, so I added Korean and Traditional Chinese and set local prices for both. <strong>Market research turned out to be the part that mattered most.</strong></p>
+    </div>
+    <div class="stack">
+      <span class="chip">Swift</span>
+      <span class="chip">SwiftUI</span>
+      <span class="chip">Swift Charts</span>
+      <span class="chip">StoreKit</span>
+      <span class="chip">RevenueCat</span>
+      <span class="chip">Codemagic</span>
+      <span class="chip">GitHub</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSER ============ -->
+<section class="closer">
+  <div class="wrap">
+    <h2>Start your journey today.</h2>
+    <p>One tap. That's the whole commitment.</p>
+    <a class="btn" href="https://apps.apple.com/us/app/muscle-odyssey/id6810556607">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.8c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.7 2.3 2.9 2.2 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.2.9-1.3 1.3-2.5 1.3-2.6 0 0-2.5-1-2.5-3.5ZM14.2 5.9c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.9 1 .1 2.1-.5 2.7-1.3Z"/></svg>
+      Download on the App Store
+    </a>
+    <p class="langs">English · 日本語 · Español · 繁體中文 · 한국어</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap frow">
+    <p class="copy">© 2026 Yoshihiko Okano</p>
+    <nav class="flinks">
+      <a href="https://apps.apple.com/us/app/muscle-odyssey/id6810556607">App Store</a>
+      <a href="https://y1693618-lang.github.io/muscleodyssey-privacy/">Privacy Policy</a>
+      <a href="https://y1693618-lang.github.io/muscleodyssey-privacy/support.html">Support</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
